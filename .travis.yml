@@ -1,0 +1,28 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: 7
+    - php: nightly
+
+env:
+  - PATH=$PATH:/home/travis/.composer/vendor/bin
+
+install:
+  # Install Composer dependencies.
+  - cd $TRAVIS_BUILD_DIR
+  - composer install --prefer-dist
+
+script:
+  # Run PHPUnit tests and submit code coverage statistics.
+  - cd $TRAVIS_BUILD_DIR
+  - mkdir -p build/logs
+  - ./vendor/bin/phpunit -c ./phpunit.xml.dist --bootstrap ./vendor/autoload.php --verbose --debug --coverage-clover ./build/logs/clover.xml || exit 1
+  - php ./vendor/bin/coveralls -v -c ./.coveralls.yml

@@ -1,0 +1,25 @@
+{
+  "name": "bartfeenstra/currency-exchange",
+  "description": "A library for retrieving currency exchange rates.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bart Feenstra",
+      "email": "bart@mynameisbart.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "~4.6",
+    "satooshi/php-coveralls": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "BartFeenstra\\CurrencyExchange\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BartFeenstra\\Tests\\CurrencyExchange\\": "tests/src"
+    }
+  }
+}
