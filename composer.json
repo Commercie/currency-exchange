@@ -18,7 +18,7 @@
     "satooshi/php-coveralls": "dev-master"
   },
   "suggest": {
-    "bartfeenstra/currency-exchange": "Retrieves currency exchange rates from Yahoo! Finance.",
+    "bartfeenstra/currency-exchange-yahoo-finance": "Retrieves currency exchange rates from Yahoo! Finance.",
     "puli/repository": "Access resources through Puli.",
     "puli/discovery": "Access resources through Puli."
   },
