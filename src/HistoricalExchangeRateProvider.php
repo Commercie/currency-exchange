@@ -7,8 +7,6 @@
 
 namespace BartFeenstra\CurrencyExchange;
 
-use Symfony\Component\Yaml\Yaml;
-
 /**
  * Provides historical exchange rates.
  */
@@ -18,7 +16,16 @@ class HistoricalExchangeRateProvider implements ExchangeRateProviderInterface
     use FixedExchangeRateProviderTrait;
 
     protected function loadAll() {
-        return Yaml::parse(file_get_contents(__DIR__ . '/../resources/historical_rates.yml'));
+        static $exchangeRates;
+
+        if (is_null($exchangeRates)) {
+            $objectExchangeRates = json_decode(file_get_contents(__DIR__ . '/../resources/historical_rates.json'));
+            foreach ((array) $objectExchangeRates as $sourceCurrencyCode => $objectExchangeRate) {
+                $exchangeRates[$sourceCurrencyCode] = (array) $objectExchangeRate;
+            }
+        }
+
+        return $exchangeRates;
     }
 
 }
