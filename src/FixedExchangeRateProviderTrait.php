@@ -25,7 +25,7 @@ trait FixedExchangeRateProviderTrait
     abstract protected function loadAll();
 
     /**
-     * Implements \BartFeenstra\CurrencyExchange::load().
+     * Implements \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface::load().
      */
     public function load($sourceCurrencyCode, $destinationCurrencyCode)
     {
@@ -52,7 +52,7 @@ trait FixedExchangeRateProviderTrait
     }
 
     /**
-     * Implements \BartFeenstra\CurrencyExchange::loadMultiple().
+     * Implements \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface::loadMultiple().
      */
     public function loadMultiple(array $currencyCodes)
     {
