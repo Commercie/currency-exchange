@@ -72,7 +72,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $destinationCurrencyCode = 'EUR';
 
         $rate = $this->sut->load($sourceCurrencyCode, $destinationCurrencyCode);
-        $this->assertInstanceOf('\BartFeenstra\CurrencyExchange\ExchangeRate',
+        $this->assertInstanceOf('\BartFeenstra\CurrencyExchange\ExchangeRateInterface',
           $rate);
         $this->assertSame(1, $rate->getRate());
     }
