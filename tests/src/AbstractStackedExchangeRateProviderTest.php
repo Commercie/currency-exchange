@@ -4,7 +4,7 @@
  * @file Contains \BartFeenstra\Tests\CurrencyExchange\AbstractStackedExchangeRateProviderTest.
  */
 
-namespace BartFeenstra\Tests\currency\Unit;
+namespace BartFeenstra\Tests\CurrencyExchange;
 
 use BartFeenstra\CurrencyExchange\ExchangeRate;
 
