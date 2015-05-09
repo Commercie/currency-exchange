@@ -28,69 +28,46 @@ class HistoricalExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::load
-     */
-    public function testLoad()
-    {
-        $expected_rates = $this->prepareExchangeRates();
-
-        $reverse_rate = '0.511291';
-
-        // Test rates that are stored in config.
-        $this->assertSame($expected_rates['EUR']['NLG'],
-          $this->sut->load('EUR', 'NLG')->getRate());
-        $this->assertSame($expected_rates['EUR']['DEM'],
-          $this->sut->load('EUR', 'DEM')->getRate());
-
-        // Test a rate that is calculated on-the-fly.
-        $this->assertSame($reverse_rate,
-          $this->sut->load('DEM', 'EUR')->getRate());
-
-        // Test an unavailable exchange rate.
-        $this->assertNull($this->sut->load('UAH', 'EUR'));
-        $this->assertNull($this->sut->load('EUR', 'UAH'));
-    }
-
-    /**
-     * Stores random exchange rates in the mocked config and returns them.
+     * Returns predefined exchange rates.
      *
-     * @return array
+     * @return array[]
      */
     protected function prepareExchangeRates()
     {
-        $rates = array(
-          'EUR' => array(
+        $rates = [
+          'EUR' => [
             'DEM' => '1.95583',
             'NLG' => '2.20371',
-          ),
-          'NLG' => array(
+          ],
+          'NLG' => [
             'EUR' => '0.453780',
-          ),
-        );
+          ],
+        ];
 
         return $rates;
     }
 
     /**
+     * @covers ::loadAll
      * @covers ::loadMultiple
      */
-    public function testLoadMultiple()
+    public function testLoadAll()
     {
-        $expected_rates = $this->prepareExchangeRates();
+        $expectedRates = $this->prepareExchangeRates();
 
-        $returned_rates = $this->sut->loadMultiple(array(
-            // Test a rate that is stored in config.
-          'EUR' => array('NLG'),
+        $returnedRates = $this->sut->loadMultiple(array(
+            // Test a directly available exchange rate.
+          'EUR' => ['NLG'],
             // Test a reverse exchange rate.
-          'NLG' => array('EUR'),
+          'NLG' => ['EUR'],
             // Test an unavailable exchange rate.
-          'ABC' => array('XXX'),
+          'ABC' => ['XXX'],
         ));
 
-        $this->assertSame($expected_rates['EUR']['NLG'],
-          $returned_rates['EUR']['NLG']->getRate());
-        $this->assertSame($expected_rates['NLG']['EUR'],
-          $returned_rates['NLG']['EUR']->getRate());
-        $this->assertNull($returned_rates['ABC']['XXX']);
+        $this->assertSame($expectedRates['EUR']['NLG'],
+          $returnedRates['EUR']['NLG']->getRate());
+        $this->assertSame($expectedRates['NLG']['EUR'],
+          $returnedRates['NLG']['EUR']->getRate());
+        $this->assertNull($returnedRates['ABC']['XXX']);
     }
 }
