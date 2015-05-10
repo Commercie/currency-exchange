@@ -28,6 +28,15 @@ class ExchangeRate implements ExchangeRateInterface
     protected $destinationCurrencyCode;
 
     /**
+     * The ID of the exchange rate provider that provided this rate.
+     *
+     * The ID is arbitrary and depends on the application.
+     *
+     * @return string|null
+     */
+    protected $exchangeRateProviderId;
+
+    /**
      * The code of the source currency.
      *
      * @var string
@@ -85,7 +94,8 @@ class ExchangeRate implements ExchangeRateInterface
       $destinationCurrencyCode,
       $rate
     ) {
-        return new static($timestamp, $sourceCurrencyCode, $destinationCurrencyCode, $rate);
+        return new static($timestamp, $sourceCurrencyCode,
+          $destinationCurrencyCode, $rate);
     }
 
     public function getDestinationCurrencyCode()
@@ -132,6 +142,18 @@ class ExchangeRate implements ExchangeRateInterface
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    public function getExchangeRateProviderId()
+    {
+        return $this->exchangeRateProviderId;
+    }
+
+    public function setExchangeRateProviderId($id)
+    {
+        $this->exchangeRateProviderId = $id;
 
         return $this;
     }

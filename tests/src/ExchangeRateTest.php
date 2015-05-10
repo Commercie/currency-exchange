@@ -2,19 +2,17 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\Unit\ExchangeRateUnitTest.
+ * Contains \BartFeenstra\Tests\CurrencyExchange\ExchangeRateTest.
  */
 
-namespace BartFeenstra\CurrencyExchange\Unit;
+namespace BartFeenstra\Tests\CurrencyExchange;
 
 use BartFeenstra\CurrencyExchange\ExchangeRate;
 
 /**
  * @coversDefaultClass \BartFeenstra\CurrencyExchange\ExchangeRate
- *
- * @group Currency
  */
-class ExchangeRateUnitTest extends \PHPUnit_Framework_TestCase
+class ExchangeRateTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -95,6 +93,18 @@ class ExchangeRateUnitTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->exchangeRate,
           $this->exchangeRate->setTimestamp($timestamp));
         $this->assertSame($timestamp, $this->exchangeRate->getTimestamp());
+    }
+
+    /**
+     * @covers ::getExchangeRateProviderId
+     * @covers ::setExchangeRateProviderId
+     */
+    public function testGetExchangeRateProviderId()
+    {
+        $id = 'fooBar' . mt_rand();
+        $this->assertSame($this->exchangeRate,
+          $this->exchangeRate->setExchangeRateProviderId($id));
+        $this->assertSame($id, $this->exchangeRate->getExchangeRateProviderId());
     }
 
 }

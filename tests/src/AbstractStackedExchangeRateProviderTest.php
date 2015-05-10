@@ -33,7 +33,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
     {
         $sourceCurrencyCode = 'EUR';
         $destinationCurrencyCode = 'NLG';
-        $rate = '2.20371';
+        $rate = ExchangeRate::create(null, $sourceCurrencyCode, $destinationCurrencyCode, '2.20371');
 
         $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $exchangeRateProviderA->expects($this->once())
