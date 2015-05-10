@@ -35,8 +35,7 @@ trait FixedExchangeRateProviderTrait
 
         if (isset($exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode])) {
             $rate = $exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode];
-        }
-        // Conversion rates are two-way. If a reverse rate is unavailable, set it.
+        } // Conversion rates are two-way. If a reverse rate is unavailable, set it.
         elseif (isset($exchangeRates[$destinationCurrencyCode][$sourceCurrencyCode])) {
             $rate = bcdiv(1,
               $exchangeRates[$destinationCurrencyCode][$sourceCurrencyCode],
@@ -44,7 +43,7 @@ trait FixedExchangeRateProviderTrait
         }
 
         if ($rate) {
-            return ExchangeRate::create(null, $sourceCurrencyCode,
+            return ExchangeRate::create($sourceCurrencyCode,
               $destinationCurrencyCode, $rate);
         }
 

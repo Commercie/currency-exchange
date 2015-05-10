@@ -24,25 +24,22 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $timestamp = mt_rand();
         $source_currency_code = 'FOO';
         $destination_currency_code = 'BAR';
         $rate = mt_rand();
-        $this->exchangeRate = ExchangeRate::create($timestamp,
-          $source_currency_code, $destination_currency_code, $rate);
+        $this->exchangeRate = ExchangeRate::create($source_currency_code, $destination_currency_code, $rate);
     }
 
     /**
+     * @covers ::create
      * @covers ::__construct
      */
-    public function testConstruct()
+    public function testCreate()
     {
-        $timestamp = mt_rand();
         $source_currency_code = 'FOO';
         $destination_currency_code = 'BAR';
         $rate = mt_rand();
-        $this->exchangeRate = ExchangeRate::create($timestamp,
-          $source_currency_code, $destination_currency_code, $rate);
+        $this->exchangeRate = ExchangeRate::create($source_currency_code, $destination_currency_code, $rate);
     }
 
     /**

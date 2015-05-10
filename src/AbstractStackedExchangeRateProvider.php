@@ -26,8 +26,8 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
     public function load($sourceCurrencyCode, $destinationCurrencyCode)
     {
         if ($sourceCurrencyCode == $destinationCurrencyCode) {
-            return ExchangeRate::create(time(), $sourceCurrencyCode,
-              $destinationCurrencyCode, 1);
+            return ExchangeRate::create($sourceCurrencyCode,
+              $destinationCurrencyCode, '1');
         }
 
         foreach ($this->getExchangeRateProviders() as $exchangeRateProviderId => $exchangeRateProvider) {
@@ -55,8 +55,8 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
             // Set rates for identical source and destination currencies.
             foreach ($destinationCurrencyCodes as $index => $destinationCurrencyCode) {
                 if ($sourceCurrencyCode == $destinationCurrencyCode) {
-                    $exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode] = ExchangeRate::create(null,
-                      $sourceCurrencyCode, $destinationCurrencyCode, 1);
+                    $exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode] = ExchangeRate::create($sourceCurrencyCode,
+                      $destinationCurrencyCode, '1');
                     // Prevent the rate from being loaded by any exchange rate
                     // providers.
                     unset($currencyCodes[$sourceCurrencyCode][$index]);

@@ -33,7 +33,8 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
     {
         $sourceCurrencyCode = 'EUR';
         $destinationCurrencyCode = 'NLG';
-        $rate = ExchangeRate::create(null, $sourceCurrencyCode, $destinationCurrencyCode, '2.20371');
+        $rate = ExchangeRate::create($sourceCurrencyCode,
+          $destinationCurrencyCode, '2.20371');
 
         $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $exchangeRateProviderA->expects($this->once())
@@ -74,7 +75,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $rate = $this->sut->load($sourceCurrencyCode, $destinationCurrencyCode);
         $this->assertInstanceOf('\BartFeenstra\CurrencyExchange\ExchangeRateInterface',
           $rate);
-        $this->assertSame(1, $rate->getRate());
+        $this->assertSame('1', $rate->getRate());
     }
 
     /**
@@ -131,8 +132,8 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $returnedRatesA = [
           $sourceCurrencyCodeA => [
-            $destinationCurrencyCodeA => ExchangeRate::create(null,
-              $sourceCurrencyCodeA, $destinationCurrencyCodeA, $rateA),
+            $destinationCurrencyCodeA => ExchangeRate::create($sourceCurrencyCodeA,
+              $destinationCurrencyCodeA, $rateA),
           ],
           $sourceCurrencyCodeB => [
             $destinationCurrencyCodeB => null,
@@ -149,8 +150,8 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
             $destinationCurrencyCodeA => null,
           ],
           $sourceCurrencyCodeB => [
-            $destinationCurrencyCodeB => ExchangeRate::create(null,
-              $sourceCurrencyCodeA, $destinationCurrencyCodeA, $rateB),
+            $destinationCurrencyCodeB => ExchangeRate::create($sourceCurrencyCodeA,
+              $destinationCurrencyCodeA, $rateB),
           ],
         ];
         $exchangeRateProviderB->expects($this->once())
@@ -173,11 +174,11 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $returned_rates = $this->sut->loadMultiple($requested_rates_provider);
         $this->assertSame($returnedRatesA[$sourceCurrencyCodeA][$destinationCurrencyCodeA],
           $returned_rates[$sourceCurrencyCodeA][$destinationCurrencyCodeA]);
-        $this->assertSame(1,
+        $this->assertSame('1',
           $returned_rates[$sourceCurrencyCodeA][$sourceCurrencyCodeA]->getRate());
         $this->assertSame($returnedRatesB[$sourceCurrencyCodeB][$destinationCurrencyCodeB],
           $returned_rates[$sourceCurrencyCodeB][$destinationCurrencyCodeB]);
-        $this->assertSame(1,
+        $this->assertSame('1',
           $returned_rates[$sourceCurrencyCodeB][$sourceCurrencyCodeB]->getRate());
     }
 
