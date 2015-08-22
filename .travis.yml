@@ -18,6 +18,7 @@ env:
 install:
   # Install Composer dependencies.
   - cd $TRAVIS_BUILD_DIR
+  - composer require "satooshi/php-coveralls:0.6.*" --no-update
   - composer install --prefer-dist
 
 script:

@@ -13,8 +13,7 @@
     "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "satooshi/php-coveralls": "dev-master"
+    "phpunit/phpunit": "~4.0"
   },
   "suggest": {
     "bartfeenstra/currency-exchange-yahoo-finance": "Retrieves currency exchange rates from Yahoo! Finance.",
