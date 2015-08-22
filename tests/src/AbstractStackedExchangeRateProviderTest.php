@@ -33,7 +33,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
     {
         $sourceCurrencyCode = 'EUR';
         $destinationCurrencyCode = 'NLG';
-        $rate = ExchangeRate::create($sourceCurrencyCode,
+        $rate = new ExchangeRate($sourceCurrencyCode,
           $destinationCurrencyCode, '2.20371');
 
         $exchangeRateProviderIdA = 'fooBar' . mt_rand();
@@ -136,7 +136,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $returnedRatesA = [
           $sourceCurrencyCodeA => [
-            $destinationCurrencyCodeA => ExchangeRate::create($sourceCurrencyCodeA,
+            $destinationCurrencyCodeA => new ExchangeRate($sourceCurrencyCodeA,
               $destinationCurrencyCodeA, $rateA),
           ],
           $sourceCurrencyCodeB => [
@@ -155,7 +155,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
             $destinationCurrencyCodeA => null,
           ],
           $sourceCurrencyCodeB => [
-            $destinationCurrencyCodeB => ExchangeRate::create($sourceCurrencyCodeA,
+            $destinationCurrencyCodeB => new ExchangeRate($sourceCurrencyCodeA,
               $destinationCurrencyCodeA, $rateB),
           ],
         ];

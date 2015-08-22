@@ -43,7 +43,7 @@ trait FixedExchangeRateProviderTrait
         }
 
         if ($rate) {
-            return ExchangeRate::create($sourceCurrencyCode,
+            return new ExchangeRate($sourceCurrencyCode,
               $destinationCurrencyCode, $rate);
         }
 

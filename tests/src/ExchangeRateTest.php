@@ -27,7 +27,7 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
         $source_currency_code = 'FOO';
         $destination_currency_code = 'BAR';
         $rate = mt_rand();
-        $this->exchangeRate = ExchangeRate::create($source_currency_code, $destination_currency_code, $rate);
+        $this->exchangeRate = new ExchangeRate($source_currency_code, $destination_currency_code, $rate);
     }
 
     /**
@@ -39,7 +39,7 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
         $source_currency_code = 'FOO';
         $destination_currency_code = 'BAR';
         $rate = mt_rand();
-        $this->exchangeRate = ExchangeRate::create($source_currency_code, $destination_currency_code, $rate);
+        $this->exchangeRate = new ExchangeRate($source_currency_code, $destination_currency_code, $rate);
     }
 
     /**
