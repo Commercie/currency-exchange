@@ -31,7 +31,6 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
      * @covers ::__construct
      */
     public function testCreate()
