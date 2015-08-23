@@ -17,9 +17,8 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
      * Gets the available exchange rate providers.
      *
      * @return \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface[]
-     *   Keys are exchange rate provider IDs and values are exchange rate
-     *   providers. They are ordered by priority, with the highest priority
-     *   first.
+     *   Exchange rate providers are ordered by priority, with the highest
+     *   priority first.
      */
     abstract protected function getExchangeRateProviders();
 
@@ -34,7 +33,7 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
             $rate = $exchangeRateProvider->load($sourceCurrencyCode,
               $destinationCurrencyCode);
             if ($rate instanceof ExchangeRateInterface) {
-                return $rate->setExchangeRateProviderId($exchangeRateProviderId);
+                return $rate;
             }
         }
 
@@ -64,13 +63,13 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
             }
         }
 
-        foreach ($this->getExchangeRateProviders() as $exchangeRateProviderId => $exchangeRateProvider) {
+        foreach ($this->getExchangeRateProviders() as $exchangeRateProvider) {
             $currencyCodes = array_filter($currencyCodes);
             if ($currencyCodes) {
                 foreach ($exchangeRateProvider->loadMultiple($currencyCodes) as $sourceCurrencyCode => $destinationCurrencyCodes) {
                     foreach ($destinationCurrencyCodes as $destinationCurrencyCode => $rate) {
                         if ($rate instanceof ExchangeRateInterface) {
-                            $exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode] = $rate->setExchangeRateProviderId($exchangeRateProviderId);
+                            $exchangeRates[$sourceCurrencyCode][$destinationCurrencyCode] = $rate;
                             // Prevent the rate from being loaded again by other
                             // exchange rate providers.
                             $index = array_search($destinationCurrencyCode,

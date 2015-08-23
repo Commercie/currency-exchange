@@ -132,7 +132,6 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           $sourceCurrencyCodeB => [$destinationCurrencyCodeB],
         ];
 
-        $exchangeRateProviderIdA = 'fooBar' . mt_rand();
         $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $returnedRatesA = [
           $sourceCurrencyCodeA => [
@@ -148,7 +147,6 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_a)
           ->willReturn($returnedRatesA);
 
-        $exchangeRateProviderIdB = 'fooBar' . mt_rand();
         $exchangeRateProviderB = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $returnedRatesB = [
           $sourceCurrencyCodeA => [
@@ -164,7 +162,6 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_b)
           ->willReturn($returnedRatesB);
 
-        $exchangeRateProviderIdC = 'fooBar' . mt_rand();
         $exchangeRateProviderC = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
         $exchangeRateProviderC->expects($this->never())
           ->method('loadMultiple');
@@ -172,24 +169,20 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $this->sut->expects($this->atLeastOnce())
           ->method('getExchangeRateProviders')
           ->willReturn([
-            $exchangeRateProviderIdA => $exchangeRateProviderA,
-            $exchangeRateProviderIdB => $exchangeRateProviderB,
-            $exchangeRateProviderIdC => $exchangeRateProviderC,
+            $exchangeRateProviderA,
+            $exchangeRateProviderB,
+            $exchangeRateProviderC,
           ]);
 
         $exchangeRates = $this->sut->loadMultiple($requested_rates_provider);
         $this->assertSame($returnedRatesA[$sourceCurrencyCodeA][$destinationCurrencyCodeA],
           $exchangeRates[$sourceCurrencyCodeA][$destinationCurrencyCodeA]);
-        $this->assertSame($exchangeRateProviderIdA,
-          $exchangeRates[$sourceCurrencyCodeA][$destinationCurrencyCodeA]->getExchangeRateProviderId());
         $this->assertSame('1',
           $exchangeRates[$sourceCurrencyCodeA][$sourceCurrencyCodeA]->getRate());
         $this->assertSame($returnedRatesB[$sourceCurrencyCodeB][$destinationCurrencyCodeB],
           $exchangeRates[$sourceCurrencyCodeB][$destinationCurrencyCodeB]);
         $this->assertSame('1',
           $exchangeRates[$sourceCurrencyCodeB][$sourceCurrencyCodeB]->getRate());
-        $this->assertSame($exchangeRateProviderIdB,
-          $exchangeRates[$sourceCurrencyCodeB][$destinationCurrencyCodeB]->getExchangeRateProviderId());
     }
 
 }

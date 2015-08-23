@@ -118,16 +118,4 @@ class ExchangeRate implements ExchangeRateInterface
         return $this;
     }
 
-    public function getExchangeRateProviderId()
-    {
-        return $this->exchangeRateProviderId;
-    }
-
-    public function setExchangeRateProviderId($id)
-    {
-        $this->exchangeRateProviderId = $id;
-
-        return $this;
-    }
-
 }

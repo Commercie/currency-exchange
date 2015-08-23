@@ -83,24 +83,4 @@ interface ExchangeRateInterface
      */
     public function setTimestamp($timestamp);
 
-    /**
-     * Gets the ID of the exchange rate provider that provided this rate.
-     *
-     * The ID is arbitrary and depends on the application.
-     *
-     * @return string|null
-     */
-    public function getExchangeRateProviderId();
-
-    /**
-     * Sets the ID of the exchange rate provider that provided this rate.
-     *
-     * The ID is arbitrary and depends on the application.
-     *
-     * @param string $id
-     *
-     * @return $this
-     */
-    public function setExchangeRateProviderId($id);
-
 }

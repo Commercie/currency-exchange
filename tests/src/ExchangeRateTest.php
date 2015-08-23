@@ -91,16 +91,4 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($timestamp, $this->exchangeRate->getTimestamp());
     }
 
-    /**
-     * @covers ::getExchangeRateProviderId
-     * @covers ::setExchangeRateProviderId
-     */
-    public function testGetExchangeRateProviderId()
-    {
-        $id = 'fooBar' . mt_rand();
-        $this->assertSame($this->exchangeRate,
-          $this->exchangeRate->setExchangeRateProviderId($id));
-        $this->assertSame($id, $this->exchangeRate->getExchangeRateProviderId());
-    }
-
 }
