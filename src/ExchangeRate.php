@@ -53,21 +53,21 @@ class ExchangeRate implements ExchangeRateInterface
     /**
      * Constructs a new instance.
      *
-     * @param string $source_currency_code
+     * @param string $sourceCurrencyCode
      *   The code of the source currency.
-     * @param string $destination_currency_code
+     * @param string $destinationCurrencyCode
      *   The code of the destination currency.
      * @param string $rate
      *   The exchange rate.
      */
     public function __construct(
-      $source_currency_code,
-      $destination_currency_code,
+      $sourceCurrencyCode,
+      $destinationCurrencyCode,
       $rate
     ) {
-        $this->destinationCurrencyCode = $destination_currency_code;
+        $this->destinationCurrencyCode = $destinationCurrencyCode;
         $this->rate = $rate;
-        $this->sourceCurrencyCode = $source_currency_code;
+        $this->sourceCurrencyCode = $sourceCurrencyCode;
     }
 
     public function getDestinationCurrencyCode()
