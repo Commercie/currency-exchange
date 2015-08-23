@@ -28,15 +28,6 @@ class ExchangeRate implements ExchangeRateInterface
     protected $destinationCurrencyCode;
 
     /**
-     * The ID of the exchange rate provider that provided this rate.
-     *
-     * The ID is arbitrary and depends on the application.
-     *
-     * @return string|null
-     */
-    protected $exchangeRateProviderId;
-
-    /**
      * The code of the source currency.
      *
      * @var string

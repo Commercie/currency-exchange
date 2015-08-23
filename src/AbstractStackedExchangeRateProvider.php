@@ -29,7 +29,7 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
               $destinationCurrencyCode, '1');
         }
 
-        foreach ($this->getExchangeRateProviders() as $exchangeRateProviderId => $exchangeRateProvider) {
+        foreach ($this->getExchangeRateProviders() as $exchangeRateProvider) {
             $rate = $exchangeRateProvider->load($sourceCurrencyCode,
               $destinationCurrencyCode);
             if ($rate instanceof ExchangeRateInterface) {

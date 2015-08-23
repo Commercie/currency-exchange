@@ -39,21 +39,18 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $rate = new ExchangeRate($sourceCurrencyCode,
           $destinationCurrencyCode, '2.20371');
 
-        $exchangeRateProviderIdA = 'fooBar' . mt_rand();
         $exchangeRateProviderA = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderA->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn(null);
 
-        $exchangeRateProviderIdB = 'fooBar' . mt_rand();
         $exchangeRateProviderB = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderB->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn($rate);
 
-        $exchangeRateProviderIdC = 'fooBar' . mt_rand();
         $exchangeRateProviderC = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderC->expects($this->never())
           ->method('load');
@@ -61,9 +58,9 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $this->sut->expects($this->atLeastOnce())
           ->method('getExchangeRateProviders')
           ->willReturn([
-            $exchangeRateProviderIdA => $exchangeRateProviderA,
-            $exchangeRateProviderIdB => $exchangeRateProviderB,
-            $exchangeRateProviderIdC => $exchangeRateProviderC,
+            $exchangeRateProviderA,
+            $exchangeRateProviderB,
+            $exchangeRateProviderC,
           ]);
 
         $this->assertSame($rate,
