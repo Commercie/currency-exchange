@@ -6,7 +6,10 @@
 
 namespace BartFeenstra\Tests\CurrencyExchange;
 
+use BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider;
 use BartFeenstra\CurrencyExchange\ExchangeRate;
+use BartFeenstra\CurrencyExchange\ExchangeRateInterface;
+use BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface;
 
 /**
  * @coversDefaultClass \BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider
@@ -23,7 +26,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
 
     public function setUp()
     {
-        $this->sut = $this->getMockForAbstractClass('\BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider');
+        $this->sut = $this->getMockForAbstractClass(AbstractStackedExchangeRateProvider::class);
     }
 
     /**
@@ -37,21 +40,21 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           $destinationCurrencyCode, '2.20371');
 
         $exchangeRateProviderIdA = 'fooBar' . mt_rand();
-        $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderA = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderA->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn(null);
 
         $exchangeRateProviderIdB = 'fooBar' . mt_rand();
-        $exchangeRateProviderB = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderB = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderB->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn($rate);
 
         $exchangeRateProviderIdC = 'fooBar' . mt_rand();
-        $exchangeRateProviderC = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderC = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderC->expects($this->never())
           ->method('load');
 
@@ -76,8 +79,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $destinationCurrencyCode = 'EUR';
 
         $rate = $this->sut->load($sourceCurrencyCode, $destinationCurrencyCode);
-        $this->assertInstanceOf('\BartFeenstra\CurrencyExchange\ExchangeRateInterface',
-          $rate);
+        $this->assertInstanceOf(ExchangeRateInterface::class, $rate);
         $this->assertSame('1', $rate->getRate());
     }
 
@@ -132,7 +134,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           $sourceCurrencyCodeB => [$destinationCurrencyCodeB],
         ];
 
-        $exchangeRateProviderA = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderA = $this->getMock(ExchangeRateProviderInterface::class);
         $returnedRatesA = [
           $sourceCurrencyCodeA => [
             $destinationCurrencyCodeA => new ExchangeRate($sourceCurrencyCodeA,
@@ -147,7 +149,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_a)
           ->willReturn($returnedRatesA);
 
-        $exchangeRateProviderB = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderB = $this->getMock(ExchangeRateProviderInterface::class);
         $returnedRatesB = [
           $sourceCurrencyCodeA => [
             $destinationCurrencyCodeA => null,
@@ -162,7 +164,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_b)
           ->willReturn($returnedRatesB);
 
-        $exchangeRateProviderC = $this->getMock('\BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface');
+        $exchangeRateProviderC = $this->getMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderC->expects($this->never())
           ->method('loadMultiple');
 

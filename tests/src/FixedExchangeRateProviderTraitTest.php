@@ -6,6 +6,7 @@
  */
 
 namespace BartFeenstra\Tests\CurrencyExchange;
+use BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait;
 
 /**
  * @coversDefaultClass \BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait
@@ -22,7 +23,7 @@ class FixedExchangeRateProviderTraitTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->sut = $this->getMockForTrait('\BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait');
+        $this->sut = $this->getMockForTrait(FixedExchangeRateProviderTrait::class);
         $this->sut->expects($this->any())
             ->method('loadAll')
             ->willReturn($this->prepareExchangeRates());
