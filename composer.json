@@ -29,6 +29,5 @@
     "psr-4": {
       "BartFeenstra\\Tests\\CurrencyExchange\\": "tests/src"
     }
-  },
-  "minimum-stability": "beta"
+  }
 }
