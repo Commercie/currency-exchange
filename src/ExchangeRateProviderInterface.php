@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface.
+ * Contains \Commercie\CurrencyExchange\ExchangeRateProviderInterface.
  */
 
-namespace BartFeenstra\CurrencyExchange;
+namespace Commercie\CurrencyExchange;
 
 /**
  * Defines a currency exchange rate provider.
@@ -19,7 +19,7 @@ interface ExchangeRateProviderInterface
      * @param string $sourceCurrencyCode
      * @param string $destinationCurrencyCode
      *
-     * @return \BartFeenstra\CurrencyExchange\ExchangeRateInterface|null
+     * @return \Commercie\CurrencyExchange\ExchangeRateInterface|null
      */
     public function load($sourceCurrencyCode, $destinationCurrencyCode);
 
@@ -36,7 +36,7 @@ interface ExchangeRateProviderInterface
      * @return array[]
      *   Keys are the ISO 4217 codes of source currencies, values are arrays of
      *   which the keys are ISO 4217 codes of destination currencies and values
-     *   are \BartFeenstra\CurrencyExchange\ExchangeRateInterface objects, or NULL for
+     *   are \Commercie\CurrencyExchange\ExchangeRateInterface objects, or NULL for
      *   combinations of currencies for which no exchange rate could be found.
      */
     public function loadMultiple(array $currencyCodes);

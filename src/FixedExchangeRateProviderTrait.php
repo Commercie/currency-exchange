@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait.
+ * Contains \Commercie\CurrencyExchange\FixedExchangeRateProviderTrait.
  */
 
-namespace BartFeenstra\CurrencyExchange;
+namespace Commercie\CurrencyExchange;
 
 /**
  * Provides a base for exchange rate providers with fixed rates.
@@ -19,13 +19,13 @@ trait FixedExchangeRateProviderTrait
      * @return array[]
      *   Keys are the ISO 4217 codes of source currencies, values are arrays of
      *   which the keys are ISO 4217 codes of destination currencies and values
-     *   are \BartFeenstra\CurrencyExchange\ExchangeRateInterface objects, or NULL for
+     *   are \Commercie\CurrencyExchange\ExchangeRateInterface objects, or NULL for
      *   combinations of currencies for which no exchange rate could be found.
      */
     abstract protected function loadAll();
 
     /**
-     * Implements \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface::load().
+     * Implements \Commercie\CurrencyExchange\ExchangeRateProviderInterface::load().
      */
     public function load($sourceCurrencyCode, $destinationCurrencyCode)
     {
@@ -51,7 +51,7 @@ trait FixedExchangeRateProviderTrait
     }
 
     /**
-     * Implements \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface::loadMultiple().
+     * Implements \Commercie\CurrencyExchange\ExchangeRateProviderInterface::loadMultiple().
      */
     public function loadMultiple(array $currencyCodes)
     {

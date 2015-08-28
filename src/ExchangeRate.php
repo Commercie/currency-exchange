@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\ExchangeRate.
+ * Contains \Commercie\CurrencyExchange\ExchangeRate.
  */
 
-namespace BartFeenstra\CurrencyExchange;
+namespace Commercie\CurrencyExchange;
 
 /**
  * Provides an exchange rate.

@@ -2,15 +2,15 @@
 
 /**
  * @file
- * Contains \BartFeenstra\Tests\CurrencyExchange\ExchangeRateTest.
+ * Contains \Commercie\Tests\CurrencyExchange\ExchangeRateTest.
  */
 
-namespace BartFeenstra\Tests\CurrencyExchange;
+namespace Commercie\Tests\CurrencyExchange;
 
-use BartFeenstra\CurrencyExchange\ExchangeRate;
+use Commercie\CurrencyExchange\ExchangeRate;
 
 /**
- * @coversDefaultClass \BartFeenstra\CurrencyExchange\ExchangeRate
+ * @coversDefaultClass \Commercie\CurrencyExchange\ExchangeRate
  */
 class ExchangeRateTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
     /**
      * The exchange rate under test.
      *
-     * @var \BartFeenstra\CurrencyExchange\ExchangeRate
+     * @var \Commercie\CurrencyExchange\ExchangeRate
      */
     protected $exchangeRate;
 

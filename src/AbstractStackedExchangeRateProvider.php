@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider.
+ * Contains \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider.
  */
 
-namespace BartFeenstra\CurrencyExchange;
+namespace Commercie\CurrencyExchange;
 
 /**
  * Gets exchange rates from multiple exchange rate providers.
@@ -16,7 +16,7 @@ abstract class AbstractStackedExchangeRateProvider implements ExchangeRateProvid
     /**
      * Gets the available exchange rate providers.
      *
-     * @return \BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface[]
+     * @return \Commercie\CurrencyExchange\ExchangeRateProviderInterface[]
      *   Exchange rate providers are ordered by priority, with the highest
      *   priority first.
      */

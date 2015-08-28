@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \BartFeenstra\CurrencyExchange\HistoricalExchangeRateProvider.
+ * Contains \Commercie\CurrencyExchange\HistoricalExchangeRateProvider.
  */
 
-namespace BartFeenstra\CurrencyExchange;
+namespace Commercie\CurrencyExchange;
 
 /**
  * Provides historical exchange rates.

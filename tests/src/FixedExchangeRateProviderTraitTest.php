@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Contains \BartFeenstra\Tests\CurrencyExchange\FixedExchangeRateProviderTrait.
+ * Contains \Commercie\Tests\CurrencyExchange\FixedExchangeRateProviderTrait.
  */
 
-namespace BartFeenstra\Tests\CurrencyExchange;
-use BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait;
+namespace Commercie\Tests\CurrencyExchange;
+use Commercie\CurrencyExchange\FixedExchangeRateProviderTrait;
 
 /**
- * @coversDefaultClass \BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait
+ * @coversDefaultClass \Commercie\CurrencyExchange\FixedExchangeRateProviderTrait
  */
 class FixedExchangeRateProviderTraitTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class FixedExchangeRateProviderTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * The class under test.
      *
-     * @var \BartFeenstra\CurrencyExchange\FixedExchangeRateProviderTrait
+     * @var \Commercie\CurrencyExchange\FixedExchangeRateProviderTrait
      */
     protected $sut;
 

@@ -1,5 +1,5 @@
 {
-  "name": "bartfeenstra/currency-exchange",
+  "name": "commercie/currency-exchange",
   "description": "A library for retrieving currency exchange rates.",
   "license": "MIT",
   "authors": [
@@ -17,17 +17,17 @@
     "phpunit/phpunit": "~4.0"
   },
   "suggest": {
-    "bartfeenstra/currency-exchange-yahoo-finance": "Retrieves currency exchange rates from Yahoo! Finance.",
+    "commercie/currency-exchange-yahoo-finance": "Retrieves currency exchange rates from Yahoo! Finance.",
     "drupal/currency": "Integrates this package with Drupal."
   },
   "autoload": {
     "psr-4": {
-      "BartFeenstra\\CurrencyExchange\\": "src"
+      "Commercie\\CurrencyExchange\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "BartFeenstra\\Tests\\CurrencyExchange\\": "tests/src"
+      "Commercie\\Tests\\CurrencyExchange\\": "tests/src"
     }
   }
 }

@@ -2,15 +2,15 @@
 
 /**
  * @file
- * Contains \BartFeenstra\Tests\CurrencyExchange\HistoricalExchangeRateProviderTest.
+ * Contains \Commercie\Tests\CurrencyExchange\HistoricalExchangeRateProviderTest.
  */
 
-namespace BartFeenstra\Tests\CurrencyExchange;
+namespace Commercie\Tests\CurrencyExchange;
 
-use BartFeenstra\CurrencyExchange\HistoricalExchangeRateProvider;
+use Commercie\CurrencyExchange\HistoricalExchangeRateProvider;
 
 /**
- * @coversDefaultClass \BartFeenstra\CurrencyExchange\HistoricalExchangeRateProvider
+ * @coversDefaultClass \Commercie\CurrencyExchange\HistoricalExchangeRateProvider
  */
 class HistoricalExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class HistoricalExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * The class under test.
      *
-     * @var \BartFeenstra\CurrencyExchange\HistoricalExchangeRateProvider
+     * @var \Commercie\CurrencyExchange\HistoricalExchangeRateProvider
      */
     protected $sut;
 

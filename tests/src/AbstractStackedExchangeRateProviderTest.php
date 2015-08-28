@@ -1,18 +1,18 @@
 <?php
 
 /**
- * @file Contains \BartFeenstra\Tests\CurrencyExchange\AbstractStackedExchangeRateProviderTest.
+ * @file Contains \Commercie\Tests\CurrencyExchange\AbstractStackedExchangeRateProviderTest.
  */
 
-namespace BartFeenstra\Tests\CurrencyExchange;
+namespace Commercie\Tests\CurrencyExchange;
 
-use BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider;
-use BartFeenstra\CurrencyExchange\ExchangeRate;
-use BartFeenstra\CurrencyExchange\ExchangeRateInterface;
-use BartFeenstra\CurrencyExchange\ExchangeRateProviderInterface;
+use Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider;
+use Commercie\CurrencyExchange\ExchangeRate;
+use Commercie\CurrencyExchange\ExchangeRateInterface;
+use Commercie\CurrencyExchange\ExchangeRateProviderInterface;
 
 /**
- * @coversDefaultClass \BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider
+ * @coversDefaultClass \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider
  */
 class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
     /**
      * The class under test.
      *
-     * @var \BartFeenstra\CurrencyExchange\AbstractStackedExchangeRateProvider|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $sut;
 
