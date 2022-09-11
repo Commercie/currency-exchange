@@ -8,11 +8,12 @@
 namespace Commercie\Tests\CurrencyExchange;
 
 use Commercie\CurrencyExchange\ExchangeRate;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Commercie\CurrencyExchange\ExchangeRate
  */
-class ExchangeRateTest extends \PHPUnit_Framework_TestCase
+class ExchangeRateTest extends TestCase
 {
 
     /**
@@ -22,7 +23,7 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
      */
     protected $exchangeRate;
 
-    public function setUp()
+    public function setUp(): void
     {
         $sourceCurrencyCode = 'FOO';
         $destinationCurrencyCode = 'BAR';
@@ -39,6 +40,7 @@ class ExchangeRateTest extends \PHPUnit_Framework_TestCase
         $destinationCurrencyCode = 'BAR';
         $rate = mt_rand();
         $this->exchangeRate = new ExchangeRate($sourceCurrencyCode, $destinationCurrencyCode, $rate);
+        $this->assertInstanceOf(ExchangeRate::class, $this->exchangeRate);
     }
 
     /**
