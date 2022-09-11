@@ -10,21 +10,23 @@ use Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider;
 use Commercie\CurrencyExchange\ExchangeRate;
 use Commercie\CurrencyExchange\ExchangeRateInterface;
 use Commercie\CurrencyExchange\ExchangeRateProviderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider
  */
-class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
+class AbstractStackedExchangeRateProviderTest extends TestCase
 {
 
     /**
      * The class under test.
      *
-     * @var \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Commercie\CurrencyExchange\AbstractStackedExchangeRateProvider|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = $this->getMockForAbstractClass(AbstractStackedExchangeRateProvider::class);
     }
@@ -39,19 +41,19 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
         $rate = new ExchangeRate($sourceCurrencyCode,
           $destinationCurrencyCode, '2.20371');
 
-        $exchangeRateProviderA = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderA = $this->createMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderA->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn(null);
 
-        $exchangeRateProviderB = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderB = $this->createMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderB->expects($this->once())
           ->method('load')
           ->with($sourceCurrencyCode, $destinationCurrencyCode)
           ->willReturn($rate);
 
-        $exchangeRateProviderC = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderC = $this->createMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderC->expects($this->never())
           ->method('load');
 
@@ -131,7 +133,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           $sourceCurrencyCodeB => [$destinationCurrencyCodeB],
         ];
 
-        $exchangeRateProviderA = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderA = $this->createMock(ExchangeRateProviderInterface::class);
         $returnedRatesA = [
           $sourceCurrencyCodeA => [
             $destinationCurrencyCodeA => new ExchangeRate($sourceCurrencyCodeA,
@@ -146,7 +148,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_a)
           ->willReturn($returnedRatesA);
 
-        $exchangeRateProviderB = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderB = $this->createMock(ExchangeRateProviderInterface::class);
         $returnedRatesB = [
           $sourceCurrencyCodeA => [
             $destinationCurrencyCodeA => null,
@@ -161,7 +163,7 @@ class AbstractStackedExchangeRateProviderTest extends \PHPUnit_Framework_TestCas
           ->with($requested_rates_plugin_b)
           ->willReturn($returnedRatesB);
 
-        $exchangeRateProviderC = $this->getMock(ExchangeRateProviderInterface::class);
+        $exchangeRateProviderC = $this->createMock(ExchangeRateProviderInterface::class);
         $exchangeRateProviderC->expects($this->never())
           ->method('loadMultiple');
 

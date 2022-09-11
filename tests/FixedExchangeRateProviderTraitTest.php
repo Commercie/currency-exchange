@@ -6,12 +6,14 @@
  */
 
 namespace Commercie\Tests\CurrencyExchange;
+
 use Commercie\CurrencyExchange\FixedExchangeRateProviderTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Commercie\CurrencyExchange\FixedExchangeRateProviderTrait
  */
-class FixedExchangeRateProviderTraitTest extends \PHPUnit_Framework_TestCase
+class FixedExchangeRateProviderTraitTest extends TestCase
 {
 
     /**
@@ -21,7 +23,7 @@ class FixedExchangeRateProviderTraitTest extends \PHPUnit_Framework_TestCase
      */
     protected $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = $this->getMockForTrait(FixedExchangeRateProviderTrait::class);
         $this->sut->expects($this->any())

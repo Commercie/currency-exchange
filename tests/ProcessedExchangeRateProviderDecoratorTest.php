@@ -10,17 +10,18 @@ use Commercie\CurrencyExchange\ExchangeRate;
 use Commercie\CurrencyExchange\ExchangeRateInterface;
 use Commercie\CurrencyExchange\ExchangeRateProviderInterface;
 use Commercie\CurrencyExchange\ProcessedExchangeRateProviderDecorator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Commercie\CurrencyExchange\ProcessedExchangeRateProviderDecorator
  */
-class ProcessedExchangeRateProviderDecoratorTest extends \PHPUnit_Framework_TestCase
+class ProcessedExchangeRateProviderDecoratorTest extends TestCase
 {
 
     /**
      * The decorated exchange rate provider.
      *
-     * @var \Commercie\CurrencyExchange\ExchangeRateProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Commercie\CurrencyExchange\ExchangeRateProviderInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $decoratedExchangeRateProvider;
 
@@ -41,9 +42,9 @@ class ProcessedExchangeRateProviderDecoratorTest extends \PHPUnit_Framework_Test
      */
     protected $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->decoratedExchangeRateProvider = $this->getMock(ExchangeRateProviderInterface::class);
+        $this->decoratedExchangeRateProvider = $this->createMock(ExchangeRateProviderInterface::class);
 
         $this->processCallback = function (
           ExchangeRateInterface $exchangeRate = null

@@ -8,11 +8,12 @@
 namespace Commercie\Tests\CurrencyExchange;
 
 use Commercie\CurrencyExchange\HistoricalExchangeRateProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Commercie\CurrencyExchange\HistoricalExchangeRateProvider
  */
-class HistoricalExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
+class HistoricalExchangeRateProviderTest extends TestCase
 {
 
     /**
@@ -22,7 +23,7 @@ class HistoricalExchangeRateProviderTest extends \PHPUnit_Framework_TestCase
      */
     protected $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new HistoricalExchangeRateProvider();
     }
